@@ -1,0 +1,27 @@
+{
+    "name": "CSDN killer",
+    "version": "0.0.1",
+    "description": "从百度的搜索结果中排除CSDN的内容！",
+    "permissions": [
+      "declarativeContent",
+      "storage",
+      "webNavigation",
+      "tabs",
+      "notifications",
+      "http://*/",
+      "https://*/",
+      "webRequest",
+      "webRequestBlocking"
+    ],
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": true
+    },
+    "browser_action": {
+    },
+    "icons": {
+      "16": "images/16.png",
+      "32": "images/32.png"
+    },
+    "manifest_version": 2
+  }
