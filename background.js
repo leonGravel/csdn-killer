@@ -1,12 +1,21 @@
+function getChangeParam(index,url){
+    var queryParamStart = url.substring(index)
+    var length = queryParamStart.indexOf('&')
+    var queryWord = url.substring(index).substring(0,length)
+    var newWord = queryWord.split('-csdn').join('')
+    return url.replace(queryWord,newWord+' -csdn')
+
+}
 chrome.webRequest.onBeforeRequest.addListener(function(details) {
-    var index = details.url.indexOf('wd=')
-        if(index>0){
-                var suburl = details.url.substring(index)
-                var length = suburl.indexOf('&')
-                var oldWD = details.url.substring(index).substring(0,length)
-                details.url = details.url.replace(oldWD,oldWD+' -csdn')
+
+    var bdIndex = details.url.indexOf('wd=')
+    var ggIndex = details.url.indexOf('q=')
+        if(bdIndex>0){
+            details.url = getChangeParam(bdIndex,details.url);
+        }else if(ggIndex>0){
+            details.url = getChangeParam(ggIndex,details.url);
         }
-        
         return {redirectUrl:details.url};
     
-    },{urls: ["https://www.baidu.com/*"]},["blocking"]
+    },{urls: ["https://www.baidu.com/*","https://www.google.com/*","https://www.google.com.hk/*"]},["blocking"]
+)
