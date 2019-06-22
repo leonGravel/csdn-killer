@@ -3,13 +3,9 @@
     "version": "0.0.1",
     "description": "从百度的搜索结果中排除CSDN的内容！",
     "permissions": [
-      "declarativeContent",
-      "storage",
-      "webNavigation",
-      "tabs",
-      "notifications",
-      "http://*/",
-      "https://*/",
+      "https://www.baidu.com/*",
+      "https://www.google.com/*",
+      "https://www.google.com.hk/*",
       "webRequest",
       "webRequestBlocking"
     ],
