@@ -1,7 +1,13 @@
 function getChangeParam(index,url){
     var queryParamStart = url.substring(index)
     var length = queryParamStart.indexOf('&')
-    var queryWord = url.substring(index).substring(0,length)
+    var queryWord
+    if (length < 0) {
+        queryWord = url.substring(index).substring(0)
+    } else {
+        queryWord = url.substring(index).substring(0, length)
+    }
+    
     var newWord = queryWord.split('-csdn').join('')
     return url.replace(queryWord,newWord+' -csdn')
 
